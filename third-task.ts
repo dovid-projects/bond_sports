@@ -11,17 +11,12 @@
  */
 
 function compareArrays(a: number[], b: number[]): boolean {
-    // Check if either array is null, undefined, or empty
     if (!a || !b || a.length === 0 || b.length === 0) {
       return false;
     }
-    
-    // Check if arrays are of different lengths
     if (a.length !== b.length) {
       return false;
     }
-    
-    // Create a Map to store the count of each unique element in array a
     const map = new Map<number, number>();
     for (const num of a) {
       if (!map.has(num)) {
@@ -30,8 +25,6 @@ function compareArrays(a: number[], b: number[]): boolean {
         map.set(num, map.get(num)! + 1);
       }
     }
-    
-    // Check if each element in array b is the square of an element in array a
     for (const num of b) {
       const root = Math.sqrt(num);
       if (Number.isInteger(root) && map.has(root)) {
